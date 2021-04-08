@@ -27,5 +27,5 @@ check-updates:
 
 build-run: build run
 
-go: install
+help: install
 	./build/install/app/bin/app -h
