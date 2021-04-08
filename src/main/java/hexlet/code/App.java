@@ -4,7 +4,7 @@ import picocli.CommandLine;
 
 import java.util.concurrent.Callable;
 
-@CommandLine.Command(name = "main")
+@CommandLine.Command(name = "main", mixinStandardHelpOptions = true)
 public class App implements Callable<Integer> {
 
     public static void main(final String[] args) {
