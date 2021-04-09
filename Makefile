@@ -29,3 +29,7 @@ build-run: build run
 
 help: install
 	./build/install/app/bin/app -h
+
+test: install
+	./build/install/app/bin/app file1.json file2.json
+
