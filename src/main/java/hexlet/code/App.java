@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.TreeNode;
 import picocli.CommandLine;
 
 import java.util.concurrent.Callable;
@@ -24,7 +25,10 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        System.out.println("from call");
+        final TreeNode treeNode1 = Reader.readJson(filepath1);
+        final TreeNode treeNode2 = Reader.readJson(filepath2);
+        System.out.println(treeNode1);
+        System.out.println(treeNode2);
         return 0;
     }
 }
