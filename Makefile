@@ -16,9 +16,6 @@ run-dist:
 run:
 	./gradlew run
 
-test:
-	./gradlew test
-
 lint:
 	./gradlew checkstyleMain checkstyleTest
 
