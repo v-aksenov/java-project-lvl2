@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class Differ {
 
     public final String generate(String filePath1, String filePath2) throws IOException {
-        final SortedMap<String, Object> map1 = Reader.readJson(filePath1);
-        final SortedMap<String, Object> map2 = Reader.readJson(filePath2);
+        final SortedMap<String, Object> map1 = Parser.readJson(filePath1);
+        final SortedMap<String, Object> map2 = Parser.readJson(filePath2);
         return "{\n" + getDiff(map1, map2) + "}";
     }
 

@@ -19,8 +19,14 @@ class DifferTest {
             }""";
 
     @Test
-    void generate() throws IOException {
+    void generateJsonDIff() throws IOException {
         final String generate = new Differ().generate("src/test/resources/file1.json", "src/test/resources/file2.json");
+        assertEquals(EXPECT, generate);
+    }
+
+    @Test
+    void generateYmlDIff() throws IOException {
+        final String generate = new Differ().generate("src/test/resources/file1.yml", "src/test/resources/file2.yml");
         assertEquals(EXPECT, generate);
     }
 }
