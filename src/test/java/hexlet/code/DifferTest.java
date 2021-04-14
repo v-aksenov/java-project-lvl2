@@ -20,7 +20,7 @@ class DifferTest {
 
     @Test
     void generate() throws IOException {
-        final String generate = new Differ().generate("file1.json", "file2.json");
+        final String generate = new Differ().generate("src/test/resources/file1.json", "src/test/resources/file2.json");
         assertEquals(EXPECT, generate);
     }
 }

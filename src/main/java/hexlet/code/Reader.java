@@ -8,10 +8,11 @@ import java.io.IOException;
 import java.util.SortedMap;
 
 public class Reader {
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     public static SortedMap<String, Object> readJson(String filepath) throws IOException {
-        TypeReference<SortedMap<String, Object>> typeRef = new TypeReference<>() {};
-        return mapper.readValue(new File(filepath), typeRef);
+        TypeReference<SortedMap<String, Object>> typeRef = new TypeReference<>() {
+        };
+        return MAPPER.readValue(new File(filepath), typeRef);
     }
 }

@@ -7,8 +7,11 @@ clean:
 build: clean
 	./gradlew build
 
-install: clean
-	./gradlew install
+build-lint: lint
+	./gradlew build
+
+install: build-lint
+	./gradlew install test
 
 run-dist:
 	./build/install/java-package/bin/java-package
@@ -16,7 +19,7 @@ run-dist:
 run:
 	./gradlew run
 
-lint:
+lint: build
 	./gradlew checkstyleMain checkstyleTest
 
 check-updates:
@@ -28,5 +31,5 @@ help: install
 	./build/install/app/bin/app -h
 
 test: install
-	./build/install/app/bin/app file1.json file2.json
+	./gradlew test
 
