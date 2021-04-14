@@ -13,8 +13,7 @@ public class Differ {
     public String generate(String filePath1, String filePath2) throws IOException {
         final SortedMap<String, Object> map1 = Reader.readJson(filePath1);
         final SortedMap<String, Object> map2 = Reader.readJson(filePath2);
-
-        return START + getDiff(map1, map2) + END;
+        return "{\n" + getDiff(map1, map2) + "}";
     }
 
     private String getDiff(SortedMap<String, Object> fields1, SortedMap<String, Object> fields2) {
@@ -27,27 +26,24 @@ public class Differ {
             final String next = iterator.next();
             final Object next1 = fields1.get(next);
             final Object next2 = fields2.get(next);
+            String template = "  %s %s: %s\n";
             if (next2 != null) {
-                if(next1 != null) {
-                    if(!Objects.equals(next2, next1)) {
-                        sb.append(TEMPLATE.formatted("-", next, next1));
-                        sb.append(TEMPLATE.formatted("+", next, next2));
+                if (next1 != null) {
+                    if (!Objects.equals(next2, next1)) {
+                        sb.append(template.formatted("-", next, next1));
+                        sb.append(template.formatted("+", next, next2));
                     } else {
-                        sb.append(TEMPLATE.formatted(" ", next, next1));
+                        sb.append(template.formatted(" ", next, next1));
                     }
                 } else {
-                    sb.append(TEMPLATE.formatted("+", next, next2));
+                    sb.append(template.formatted("+", next, next2));
                 }
             } else {
-                if(next1 != null) {
-                    sb.append(TEMPLATE.formatted("-", next, next1));
+                if (next1 != null) {
+                    sb.append(template.formatted("-", next, next1));
                 }
             }
         }
         return sb.toString();
     }
-
-    private final static String START = "{\n";
-    private final static String END = "}";
-    private final static String TEMPLATE = "  %s %s: %s\n";
 }
